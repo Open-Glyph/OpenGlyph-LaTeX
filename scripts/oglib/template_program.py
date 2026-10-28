@@ -241,7 +241,7 @@ class TemplateProgram:
     def compile(self):
         table = dict(self.table)
         root = self.root.emit(table)
-        if root == self.root.name:
+        if root == self.root.name and not getattr(self, 'selected_root', False):
             root = self.base['name']
         closure = {}
         pending = [root]

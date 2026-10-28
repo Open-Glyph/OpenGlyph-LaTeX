@@ -5,9 +5,10 @@ import hashlib
 import json
 import shutil
 import zipfile
+import argparse
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0'
+VERSION='0.2.0'
 EXCLUDE={'.git','build','dist','__pycache__','.venv'}
 SUFFIXES={'.aux','.log','.out','.toc','.xdv','.pyc','.fls','.fdb_latexmk'}
 
@@ -20,7 +21,8 @@ def archive(path,items,prefix=''):
             info.external_attr=0o100644<<16;z.writestr(info,file.read_bytes())
 
 def main():
-    dist=ROOT/'dist';dist.mkdir(exist_ok=True)
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT/'dist');args=parser.parse_args()
+    dist=args.output.resolve();dist.mkdir(parents=True,exist_ok=True)
     required=['openglyph.sty','ebag/OpenGlyphEbag.otf','ebag/catalog.tex','data/glyphwiki-ebag.kage.jsonl.gz',
         'data/ebag-addresses.json','licenses/GlyphWiki.txt','vendor/kage-engine/COPYING','main.pdf','doc/openglyph-doc.pdf']
     for name in required:
@@ -34,7 +36,7 @@ def main():
     archive(dist/f'openglyph-v{VERSION}.zip',items,prefix='openglyph/')
     chosen=[]
     for relative,file in items:
-        if relative in {'main.tex','main.pdf','openglyph.sty','README.md','THIRD-PARTY-NOTICES.md','LICENSE','字形索引.html','examples/newforms.json','doc/openglyph-doc.pdf','docs/使用指南.md'} or relative.startswith(('ebag/','examples/myglyphs/','licenses/')):
+        if relative in {'main.tex','main.pdf','openglyph.sty','README.md','THIRD-PARTY-NOTICES.md','LICENSE','字形索引.html','examples/newforms.json','examples/modules.json','doc/openglyph-doc.pdf'} or relative.startswith(('ebag/','examples/myglyphs/','licenses/','docs/')):
             chosen.append((relative,file))
     archive(dist/f'openglyph-overleaf-v{VERSION}.zip',chosen)
     for source,target in [('main.pdf','openglyph-example.pdf'),('doc/openglyph-doc.pdf','openglyph-manual.pdf')]:

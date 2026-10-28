@@ -38,7 +38,7 @@ def validate_project(value):
     if not isinstance(rows,list) or not rows:raise ValueError('Project needs nonempty glyphs')
     ids=[]
     for row in rows:
-        if not isinstance(row,dict) or set(row)!={'id','base','edits'}:raise ValueError('Each glyph needs id, base and edits')
+        if not isinstance(row,dict) or not {'id','base','edits'}<=set(row) or set(row)-{'id','base','edits','modules','select'}:raise ValueError('Each glyph needs id, base and edits; optional modules/select')
         ids.append(identifier(row['id']))
         if not isinstance(row['base'],str) or not isinstance(row['edits'],list):raise ValueError('Invalid glyph definition')
     if len(set(ids))!=len(ids):raise ValueError('Duplicate glyph IDs')

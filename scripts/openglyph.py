@@ -19,7 +19,7 @@ def dump(path,value):path.write_text(json.dumps(value,ensure_ascii=True,indent=2
 
 def compile_project(manifest,output,allocation=None):
     from oglib.catalog import Catalog
-    from oglib.template_program import compile_program
+    from oglib.template_modules import compile_modular as compile_program
     from oglib.kage import KageRenderer
     from oglib.font import outline,write_font
     start=time.perf_counter();project=validate_project(read_json(Path(manifest)))
@@ -30,7 +30,7 @@ def compile_project(manifest,output,allocation=None):
     slots=allocate([r['id'] for r in project['glyphs']],old)
     jobs=[];table={};compiled={}
     for row in project['glyphs']:
-        program=dict(schema='guwenzi.template-program.v1',base=row['base'],edits=row['edits'])
+        program=dict(schema='guwenzi.template-program.v1',**{k:v for k,v in row.items() if k!='id'})
         recipe,info=compile_program(catalog,program);compiled[row['id']]=(recipe,info)
         for name,data in recipe['table'].items():
             if name in table and table[name]!=data:raise ValueError('Conflicting program dependency')

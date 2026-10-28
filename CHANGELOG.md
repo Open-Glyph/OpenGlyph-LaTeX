@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — 2026-10-28
+
+- Support reusable JSON modules, source-record selection, cycle rejection and exact replay.
+- Accept editable projects produced by the image-template toolchain; typesetting itself stays offline.
+- Preserve source templates and occurrence-specific edits, including selection of an entire nested component.
+- Add a module example and CLI-to-LaTeX integration guide. No claim of automatic character identification or general reconstruction accuracy.
+
 ## 0.1.0 — 2026-10-28
 
 - First independent OpenGlyph LaTeX package, with namespace-aware font-backed glyph commands.

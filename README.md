@@ -2,7 +2,7 @@
 
 已有隶定字用编号输入；字库没有的形，改部件、增饰笔、删笔、调比例，再编成字体。正文不再夹杂一张张缺字图片。
 
-**v0.1.0 首版**：附带从 GlyphWiki `ebag_s` 源码重新编译的 **22,583 个字形**、38,462 份字形及依赖程序。普通写作只需要 LaTeX；不需要账号、模型、Python、Node 或联网服务。
+**v0.2.0**：附带从 GlyphWiki `ebag_s` 源码重新编译的 **22,583 个字形**、38,462 份字形及依赖程序，新增JSON模块复用和记录抽取，支持衔接图像检索后的造字项目。普通写作仍只需要 LaTeX；不需要账号、模型、Python、Node 或联网服务。
 
 - [下载发行包](https://github.com/Open-Glyph/OpenGlyph-LaTeX/releases/latest)
 - [中文使用指南](docs/使用指南.md)
@@ -12,7 +12,7 @@
 
 ## 先写起来
 
-下载 `openglyph-overleaf-v0.1.0.zip`，上传到 Overleaf，新建项目，选择 **XeLaTeX**，编译 `main.tex`。也可以解压到本地，用 XeLaTeX 或 Tectonic 编译。
+下载 `openglyph-overleaf-v0.2.0.zip`，上传到 Overleaf，新建项目，选择 **XeLaTeX**，编译 `main.tex`。也可以解压到本地，用 XeLaTeX 或 Tectonic 编译。
 
 最小用法：把 `openglyph.sty` 和 `ebag/` 放在论文项目中。
 
@@ -88,6 +88,8 @@ python scripts/openglyph.py build examples/newforms.json -o myglyphs
 打开 `component-preview/index.html` 可以看到编号对应的真实部件图，不必对着编号猜。单独部件的避让细节与整字可能不同，编辑后仍应看完整字形。
 
 ## 分层设计
+
+新版可用 `modules` 定义复合部件，用 `module:名称` 在其它部件或字形中引用；`select` 可按实际节点抽取已有笔画组。例见 [modules.json](examples/modules.json)，与远端图像工具的衔接见 [联动排印](docs/联动排印.md)。不是让模型逐笔编写KAGE；网络检索是可选的独立步骤，正常LaTeX编译仍离线。
 
 ```text
 已有 ebag_s 编号 ──────────────→ 随包 OTF + 字形映射 ─→ openglyph.sty ─→ 论文 PDF

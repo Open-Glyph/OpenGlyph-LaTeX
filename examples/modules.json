@@ -1,0 +1,16 @@
+{
+  "schema":"openglyph.project.v1",
+  "namespace":"modules",
+  "glyphs":[{
+    "id":"newform",
+    "base":"ebag:s030-067",
+    "modules":{
+      "marked_loop":{
+        "schema":"guwenzi.template-program.v1",
+        "base":"primitive:loop",
+        "edits":[{"op":"insert","parent":"root","id":"mark","glyph":"primitive:dot","box":[70,70,130,130]}]
+      }
+    },
+    "edits":[{"op":"replace","node":"r4/r0","glyph":"module:marked_loop"}]
+  }]
+}

@@ -76,4 +76,14 @@ class BuilderTests(unittest.TestCase):
             self.assertEqual(len(list(folder.glob('*.svg'))),6)
             with self.assertRaises(ValueError):inspect('ebag:s030-067','r4',folder)
 
+    def test_remote_module_project_compiles_to_real_offline_font(self):
+        value=dict(schema='openglyph.project.v1',namespace='remote',glyphs=[dict(id='new',base='ebag:s030-067',
+            modules={'mark':dict(schema='guwenzi.template-program.v1',base='primitive:dot',edits=[])},
+            edits=[dict(op='insert',parent='root',id='mark',glyph='module:mark',box=[77,129,119,167])])])
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);project=root/'project.json';project.write_text(json.dumps(value))
+            report=compile_project(project,root/'built')
+            self.assertEqual(report['glyphs'][0]['alias'],'remote:new')
+            self.assertTrue((root/'built'/report['font_file']).is_file())
+
 if __name__=='__main__':unittest.main()
