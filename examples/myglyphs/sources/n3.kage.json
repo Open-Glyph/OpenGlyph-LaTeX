@@ -1,0 +1,29 @@
+{
+  "schema": "guwenzi.kage-construction.v1",
+  "root": "openglyph-template-427b2bb82864c62a4f6c3aa6a692699b8de5e821a2e81a02da5bd7d4646eed9d",
+  "table": {
+    "openglyph-template-427b2bb82864c62a4f6c3aa6a692699b8de5e821a2e81a02da5bd7d4646eed9d": "1:12:13:51:123:51:167$1:2:2:51:123:148:123$1:22:23:148:123:148:167$1:2:2:51:167:148:167$99:0:0:0:0:200:200:openglyph-template-2fba8f7be4b8c9f0a08f7906b6fa0fe764ecdc3c8713602cdb7f627d94cfa92b:0:0:0",
+    "openglyph-template-2fba8f7be4b8c9f0a08f7906b6fa0fe764ecdc3c8713602cdb7f627d94cfa92b": "99:0:0:12:12:108:112:openglyph-template-4b4f305da8a7d457f976cccbab531d48191a30a2595b7a1baf632fcd9f703d03$1:0:2:104:27:168:27$2:22:7:168:27:152:74:106:100$2:7:0:114:27:132:82:178:104",
+    "openglyph-template-4b4f305da8a7d457f976cccbab531d48191a30a2595b7a1baf632fcd9f703d03": "1:12:13:32:31:32:170$1:2:0:32:31:179:31$1:2:2:32:74:156:74$1:22:23:156:74:156:123$1:2:2:32:123:156:123$1:32:32:99:123:99:170$1:2:0:32:170:184:170"
+  },
+  "source_kind": "printed",
+  "compiler": "template-program-v1",
+  "template_program": {
+    "schema": "guwenzi.template-program.v1",
+    "base": "gwk:3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4:ebag_s030-067",
+    "edits": [
+      {
+        "op": "drop",
+        "node": "r4/r0/r2"
+      }
+    ]
+  },
+  "selected_components": [
+    {
+      "name": "ebag_s030-067",
+      "ref": "gwk:3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4:ebag_s030-067",
+      "closure_sha256": "3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4"
+    }
+  ],
+  "reconstruction_label": "\u6a21\u677f\u5c40\u90e8\u4fee\u6539"
+}

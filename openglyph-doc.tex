@@ -1,0 +1,55 @@
+% Compile from the repository root: tectonic -o doc openglyph-doc.tex
+\documentclass[UTF8,fontset=fandol]{ctexart}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{openglyph}
+\usepackage[unicode]{hyperref}
+\OpenGlyphLoad{ebag}
+\OpenGlyphLoad{examples/myglyphs}
+\title{OpenGlyph-LaTeX 使用手册}
+\author{OpenGlyph contributors}
+\date{v0.1.0 · 2026-10-28}
+\begin{document}
+\maketitle
+\section{解决什么问题}
+普通输入法没有的隶定字，可以用 ASCII 编号插在正文中；字库没有的形，可以按部件编号编辑后生成真实字体。已有字\ebag{s030-067}和自造字\gwglyph{my:n2}都不是图片。
+随包字库含 22,583 个 GlyphWiki ebag\_s 字形，另保留 38,462 份字形及依赖程序。字体地址与文献释读是两回事；程序不替研究者核定字形。
+
+\section{已有字：三步开始}
+下载 Release 的 Overleaf ZIP 并上传项目；选择 XeLaTeX；编译 main.tex。
+本地用户将 openglyph.sty 与 ebag 文件夹放在论文旁，导言区写：
+\begin{verbatim}
+\usepackage{openglyph}
+\OpenGlyphLoad{ebag}
+\end{verbatim}
+正文中写 \verb|\ebag{s030-067}|。字形索引 HTML 可离线按编号或部件筛选，复制对应命令。输入汉字时用于部件检索，不把命中结果当作该汉字的身份确认。
+
+\section{新字：一次编译，反复排印}
+新字的编译器需 Python 3.10+、Node.js、FontTools 与 skia-pathops；常规论文编译不需要这些工具。
+\begin{verbatim}
+python scripts/openglyph.py inspect ebag:s030-067 --node r4
+python scripts/openglyph.py build examples/newforms.json -o myglyphs
+\end{verbatim}
+导言区加入 \verb|\OpenGlyphLoad{myglyphs}|，正文使用 \verb|\gwglyph{my:n2}|。目录内保存 OTF、映射、版本固定的程序、来源及码位分配。
+
+\begin{center}
+\begin{tabular}{lcl}
+替换部件 & {\LARGE\gwglyph{my:n1}} & replace 指定部件实例 \\[4mm]
+增饰笔 & {\LARGE\gwglyph{my:n2}} & insert 现成点形基元 \\[4mm]
+删笔 & {\LARGE\gwglyph{my:n3}} & drop 指定笔画路径 \\[4mm]
+调比例 & {\LARGE\gwglyph{my:n4}} & place 部件布局框
+\end{tabular}
+\end{center}
+四个形分别编辑同一底字，不是累加修改；仅作功能演示，不虚构出处与读音。
+
+\section{ID、版本和安全边界}
+来源 ID（如 s030-067）、实例节点（如 r4/r0）、自定别名（如 my:n2）、字体局部 PUA、内容哈希和学术释读分别保存。box 使用父部件的 200 单位字格，不是 PDF 像素。
+修订时传入旧 allocation.json，已有地址不变，退役地址不挪给别的字。每个命名空间只加载一个版本；缺字或冲突会报错，不默默改成近似字。
+
+\section{交付与兼容}
+PDF 内嵌字体，读者无须安装；共享源码时同时发送字体目录。直接复制 PUA 到别的字体可能变成方框或另一字。常规编译不联网，也不需要 shell-escape。
+首版验证针对 XeLaTeX 核心的 Tectonic。LuaLaTeX 分支为实验兼容；不支持 pdfLaTeX。整篇竖排和复杂校勘格式需结合专门排版宏包。
+
+\section{来源与许可}
+OpenGlyph 新代码采用 MIT。GlyphWiki 原数据许可允许有无修改的复制、再分发及商业、非商业使用；KAGE 引擎源码按 GPL v3 保留。具体原文见 licenses 与 THIRD-PARTY-NOTICES.md。此包从有授权的数据重新编译字体，没有分发本机 SEAL 字体、未明确授权的构字注释或私人论文。
+当前发布渠道为 GitHub，尚未声称收录 CTAN、TeX Live 或 MiKTeX。
+\end{document}

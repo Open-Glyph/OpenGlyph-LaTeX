@@ -1,0 +1,10 @@
+{
+  "schema": "openglyph.allocation.v1",
+  "addresses": {
+    "n1": 57344,
+    "n2": 57345,
+    "n3": 57346,
+    "n4": 57347
+  },
+  "retired_keys": []
+}

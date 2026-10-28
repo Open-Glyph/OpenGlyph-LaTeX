@@ -1,0 +1,109 @@
+{
+  "schema": "openglyph.bundle.v1",
+  "version": "0.1.0",
+  "namespace": "my",
+  "font_file": "OpenGlyph-650e3923e9b6.otf",
+  "font_sha256": "96b4773db8e6bf3ab9b2d1d7eb35fd9ebadcf35bdc77abd5187cfe94979a9c46",
+  "glyphs": [
+    {
+      "left_side_bearing": 58,
+      "outline_sha256": "c210324dedf49b0d066f48c817f8fab61e1c7db68abe8fe1c558aebc288ab680",
+      "source_bounds": [
+        18.2,
+        15.8,
+        186.4,
+        187.0
+      ],
+      "transform_to_font": [
+        5.257009345794393,
+        0,
+        0,
+        -5.257009345794393,
+        -37.792056074766464,
+        913.0607476635515
+      ],
+      "codepoint": 57344,
+      "id": "n1",
+      "alias": "my:n1",
+      "program_sha256": "6622319c246d47884540cfdb82f9012e3076ec5e4a62f5a93bd3572d9090d864",
+      "glyph_identity": "gwz:sha256:c210324dedf49b0d066f48c817f8fab61e1c7db68abe8fe1c558aebc288ab680",
+      "scholarly_identity_verified": false
+    },
+    {
+      "left_side_bearing": 67,
+      "outline_sha256": "e98b7694899a9d530724580ed6ff15299ebc50bc462c86c6d05ba673f1f48c74",
+      "source_bounds": [
+        21.3,
+        15.5,
+        186.4,
+        187.0
+      ],
+      "transform_to_font": [
+        5.247813411078718,
+        0,
+        0,
+        -5.247813411078718,
+        -44.9854227405248,
+        911.3411078717202
+      ],
+      "codepoint": 57345,
+      "id": "n2",
+      "alias": "my:n2",
+      "program_sha256": "62d93c20c639074e0120fd200ab47441a076cf95f5ba15f85a40aad226138147",
+      "glyph_identity": "gwz:sha256:e98b7694899a9d530724580ed6ff15299ebc50bc462c86c6d05ba673f1f48c74",
+      "scholarly_identity_verified": false
+    },
+    {
+      "left_side_bearing": 67,
+      "outline_sha256": "46e98a0253142c4a6ac3b5fbf3f9a4dc85249999df9a895452de9f273af10dee",
+      "source_bounds": [
+        21.3,
+        15.5,
+        186.4,
+        187.0
+      ],
+      "transform_to_font": [
+        5.247813411078718,
+        0,
+        0,
+        -5.247813411078718,
+        -44.9854227405248,
+        911.3411078717202
+      ],
+      "codepoint": 57346,
+      "id": "n3",
+      "alias": "my:n3",
+      "program_sha256": "ea8d6c8e4afbeeac81bcc444b136814d492b3456dbbe2c2cba44387d96073e38",
+      "glyph_identity": "gwz:sha256:46e98a0253142c4a6ac3b5fbf3f9a4dc85249999df9a895452de9f273af10dee",
+      "scholarly_identity_verified": false
+    },
+    {
+      "left_side_bearing": 96,
+      "outline_sha256": "e2aaa15bc43669f6d66687fad1adb44a9fa0599f232ad53c747204058b12f875",
+      "source_bounds": [
+        33.2,
+        16.5,
+        186.4,
+        187.0
+      ],
+      "transform_to_font": [
+        5.278592375366569,
+        0,
+        0,
+        -5.278592375366569,
+        -79.58944281524924,
+        917.0967741935483
+      ],
+      "codepoint": 57347,
+      "id": "n4",
+      "alias": "my:n4",
+      "program_sha256": "2e018268c8ad4eddcbab4c83013d5f4420c98965878f34f905c7acb63d66f625",
+      "glyph_identity": "gwz:sha256:e2aaa15bc43669f6d66687fad1adb44a9fa0599f232ad53c747204058b12f875",
+      "scholarly_identity_verified": false
+    }
+  ],
+  "pua_scope": "font-local, not character identity",
+  "source_equivalence_verified": false,
+  "review_policy": "human scholarly review; generation is not acceptance",
+  "seconds": 0.13338504100102
+}

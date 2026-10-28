@@ -1,0 +1,37 @@
+% Compile this file from the project root with XeLaTeX or Tectonic.
+\documentclass[UTF8,fontset=fandol]{ctexart}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{openglyph}
+\usepackage[unicode]{hyperref}
+\OpenGlyphLoad{ebag}
+\OpenGlyphLoad{examples/myglyphs}
+\title{OpenGlyph：古文字隶定字的代码输入与排印}
+\author{OpenGlyph contributors}
+\date{2026 年 10 月}
+\begin{document}
+\maketitle
+已有隶定字可直接写进正文：\ebag{s030-067}、\ebag{s131-009}、\ebag{s162-428}。
+这几个来源编号不是字符释读，也不代表已经核定其文献身份。
+
+\section{已有字与新字可以一起排印}
+底字为\ebag{s030-067}，按编号换部件后为\gwglyph{my:n1}；
+加一点为\gwglyph{my:n2}；删一短竖为\gwglyph{my:n3}；
+调部件比例为\gwglyph{my:n4}。
+
+\begin{center}
+\begin{tabular}{lcc}
+操作 & 编辑前 & 编辑后 \\\hline
+换部件 & {\Huge\ebag{s030-067}} & {\Huge\gwglyph{my:n1}} \\[7mm]
+添饰笔 & {\Huge\ebag{s030-067}} & {\Huge\gwglyph{my:n2}} \\[7mm]
+删一笔 & {\Huge\ebag{s030-067}} & {\Huge\gwglyph{my:n3}} \\[7mm]
+调比例 & {\Huge\ebag{s030-067}} & {\Huge\gwglyph{my:n4}} \\
+\end{tabular}
+\end{center}
+字形也能在脚注使用\footnote{脚注中的字：\ebag{s030-067}、\gwglyph{my:n2}。}。
+正文使用真实的 OpenType 字体，不用图片代字。常规编译不调用 Python、Node 或云端模型。
+
+\section{使用原则}
+上述新形是功能演示，不虚构出处、读音或标准 Unicode 身份。PUA 只在相应字体内有效。
+初次选字以及修改后的字形应由研究者核对；程序负责保存版本、部件层级、映射和字体。
+宏包可以并排保留不同字样，不用近似常用字替代未知字。
+\end{document}

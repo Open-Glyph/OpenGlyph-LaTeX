@@ -1,0 +1,11 @@
+{
+  "schema": "guwenzi.template-program.v1",
+  "base": "gwk:3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4:ebag_s030-067",
+  "edits": [
+    {
+      "op": "replace",
+      "node": "r4/r0",
+      "glyph": "gwk:1105d77c4d2efc0ee00279b119f8f91c40f5a1de87ee78584453883b9dd46e48:u9f9c-j"
+    }
+  ]
+}

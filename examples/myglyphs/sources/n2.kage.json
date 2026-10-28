@@ -1,0 +1,38 @@
+{
+  "schema": "guwenzi.kage-construction.v1",
+  "root": "openglyph-template-f375dc2df76b15a6cab0015be4bfe258712e4c4bf79a7e664c915e9c5270e93f",
+  "table": {
+    "openglyph-template-f375dc2df76b15a6cab0015be4bfe258712e4c4bf79a7e664c915e9c5270e93f": "1:12:13:51:123:51:167$1:2:2:51:123:148:123$1:22:23:148:123:148:167$1:2:2:51:167:148:167$99:0:0:0:0:200:200:u81e4-03-var-001@1:0:0:0$99:0:0:77:129:119:167:openglyph-primitive-dot-v1",
+    "openglyph-primitive-dot-v1": "2:7:8:55:35:100:75:140:140",
+    "u81e4-03-var-001@1": "99:0:0:12:12:108:112:u81e3@3$1:0:2:104:27:168:27$2:22:7:168:27:152:74:106:100$2:7:0:114:27:132:82:178:104",
+    "u81e3@3": "1:12:13:32:31:32:170$1:2:0:32:31:179:31$1:32:32:99:31:99:74$1:2:2:32:74:156:74$1:22:23:156:74:156:123$1:2:2:32:123:156:123$1:32:32:99:123:99:170$1:2:0:32:170:184:170"
+  },
+  "source_kind": "printed",
+  "compiler": "template-program-v1",
+  "template_program": {
+    "schema": "guwenzi.template-program.v1",
+    "base": "gwk:3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4:ebag_s030-067",
+    "edits": [
+      {
+        "op": "insert",
+        "parent": "root",
+        "id": "inner_dot",
+        "glyph": "primitive:dot@1",
+        "box": [
+          77,
+          129,
+          119,
+          167
+        ]
+      }
+    ]
+  },
+  "selected_components": [
+    {
+      "name": "ebag_s030-067",
+      "ref": "gwk:3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4:ebag_s030-067",
+      "closure_sha256": "3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4"
+    }
+  ],
+  "reconstruction_label": "\u6a21\u677f\u5c40\u90e8\u4fee\u6539"
+}

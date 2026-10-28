@@ -1,0 +1,31 @@
+{
+  "source_url": "https://glyphwiki.org/dump.tar.gz",
+  "source_sha256": "31e715ed135671f82ea101f91572afcbecbc01f42f054517c2b450c203b8ce15",
+  "historical_sha256": "245fec970b17b68bad956b1b8846d6b5500d273993fb3086e5be1f424e9cf9ef",
+  "engine_sha256": "9aad7d51be1662e7d570e26d570b7c931802e352caaf60b584323ad850b1b596",
+  "engine_files": {
+    "2d.js": "dd17c52d85a6fcdf8a76e30189a24ba2f73856e0d298e80a72e0a562bcb70942",
+    "buhin.js": "6fa8e13bd964525299fa697dc40ea2c8b436d2ccb5952fe95f45d7fbf67b9456",
+    "curve.js": "77477845aff9c4d53616c91247510bd10daeb4282423bdfcde7a8bebcd21f0da",
+    "kage.js": "c36a60ff9ae7d392740d8aad62e823553dc25c991eba40482fcbc8a1a1db6d78",
+    "kagecd.js": "489fdd76e307642f6adaa99d280a41b1dda0760b4ca64b4711f0f49c08d9c860",
+    "kagedf.js": "e6d7cb5eeacda24705306302fd85a01c78f2adcdfdba43d1cac1d3616b6bf847",
+    "polygon.js": "f0afbe3b0c6f4723005ec927d2292eb991ecf5c598c16cfefb7bc55cfef75bf2",
+    "polygons.js": "111b9b0aaca536805cf92ab9d1e7be099f9e082a2169cc7c0bf49e3deee20b1a"
+  },
+  "selection": "named_collection",
+  "prefix": "ebag_s",
+  "selected_glyphs": 22583,
+  "created_at": "2026-10-03T04:57:16.468802+00:00",
+  "subset_programs": 38462,
+  "subset_sha256": "bda2c3a7a485639fbc882b44d1ebc2133592d5ea92904ae6711db679c5a1de91",
+  "data_license": "licenses/GlyphWiki.txt",
+  "engine_license": "vendor/kage-engine/COPYING",
+  "excluded": [
+    "local SEAL fonts",
+    "local PNGs",
+    "unlicensed IDS annotations",
+    "private PDFs and crops",
+    "credentials and user data"
+  ]
+}

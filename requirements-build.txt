@@ -1,0 +1,3 @@
+# Only needed to create new fonts; not needed to compile a paper.
+fonttools>=4.60,<5
+skia-pathops>=0.8,<1

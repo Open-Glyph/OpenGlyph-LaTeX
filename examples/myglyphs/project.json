@@ -1,0 +1,61 @@
+{
+  "schema": "openglyph.project.v1",
+  "namespace": "my",
+  "glyphs": [
+    {
+      "id": "n1",
+      "base": "ebag:s030-067",
+      "edits": [
+        {
+          "op": "replace",
+          "node": "r4/r0",
+          "glyph": "u9f9c-j"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "base": "ebag:s030-067",
+      "edits": [
+        {
+          "op": "insert",
+          "parent": "root",
+          "id": "inner_dot",
+          "glyph": "primitive:dot",
+          "box": [
+            77,
+            129,
+            119,
+            167
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "base": "ebag:s030-067",
+      "edits": [
+        {
+          "op": "drop",
+          "node": "r4/r0/r2"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "base": "ebag:s030-067",
+      "edits": [
+        {
+          "op": "place",
+          "node": "r4/r0",
+          "box": [
+            28,
+            12,
+            92,
+            112
+          ]
+        }
+      ]
+    }
+  ]
+}

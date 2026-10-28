@@ -1,0 +1,18 @@
+{
+  "schema": "guwenzi.template-program.v1",
+  "base": "gwk:3429e8b326777fc0d71433ef2c7c3d3922049e4c980f4fbaae4c6fe28b909cf4:ebag_s030-067",
+  "edits": [
+    {
+      "op": "insert",
+      "parent": "root",
+      "id": "inner_dot",
+      "glyph": "primitive:dot@1",
+      "box": [
+        77,
+        129,
+        119,
+        167
+      ]
+    }
+  ]
+}

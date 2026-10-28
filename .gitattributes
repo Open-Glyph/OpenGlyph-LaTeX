@@ -1,0 +1,9 @@
+*.sty text eol=lf
+*.tex text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.otf binary
+*.pdf binary
+*.png binary
+*.gz binary
