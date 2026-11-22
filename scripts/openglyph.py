@@ -14,6 +14,7 @@ import time
 ROOT=Path(__file__).resolve().parents[1]
 from oglib import __version__
 from oglib.project import allocate,catalog_tex,read_json,validate_project
+from oglib.ocr_markup import import_file
 
 def dump(path,value):path.write_text(json.dumps(value,ensure_ascii=True,indent=2,allow_nan=False)+'\n',encoding='utf-8')
 
@@ -102,9 +103,36 @@ def main():
     b.add_argument('project');b.add_argument('-o','--output',required=True);b.add_argument('--allocation')
     s=sub.add_parser('inspect',help='Return component occurrence IDs, not guessed stroke programs')
     s.add_argument('base');s.add_argument('--node',default='root');s.add_argument('-o','--output')
+    o=sub.add_parser('import-ocr',help='Convert OpenGlyph-OCR-IDS output with exact GlyphWiki/IDS aliases')
+    o.add_argument('source',help='OCR .txt or result .json')
+    o.add_argument('--aliases',help='JSON map such as gw:name / ids:IDS to a returned LaTeX alias')
+    o.add_argument('-o','--output',required=True,help='LaTeX body fragment')
+    ocr=sub.add_parser('ocr',help='Build a font-backed OCR LaTeX project; no model runtime required')
+    ocr.add_argument('source')
+    ocr.add_argument('-o','--output',required=True)
+    ocr.add_argument('--text-font',help='OTF/TTF ordinary-text font; default discovers Fandol from TeX')
+    ocr.add_argument('--plan',action='store_true',help='Write exact remote glyph requirements as JSON, without composing')
+    ocr.add_argument('--resolution',help='Offline JSON containing downloaded font bundles and returned aliases')
+    ocr.add_argument('--remote',action='store_true',help='Resolve required forms through the logged-in guwenzi-tools account')
+    ocr.add_argument('--profile',help='guwenzi-tools account profile')
     args=p.parse_args()
     try:
-        result=compile_project(args.project,args.output,args.allocation) if args.command=='build' else inspect(args.base,args.node,args.output)
+        if args.command=='build':result=compile_project(args.project,args.output,args.allocation)
+        elif args.command=='inspect':result=inspect(args.base,args.node,args.output)
+        elif args.command=='import-ocr':result=import_file(args.source,args.aliases,args.output)
+        else:
+            from oglib.ocr_project import plan,build,remote_resolution
+            current=plan(args.source,args.text_font)
+            if args.plan:
+                dump(Path(args.output),current);result=current
+            else:
+                resolution=read_json(Path(args.resolution)) if args.resolution else None
+                if args.remote:
+                    if args.resolution:raise ValueError('Choose --resolution or --remote')
+                    from gwz_client import Client
+                    with Client.from_config(profile=args.profile) as client:
+                        resolution=remote_resolution(client,current,Path(args.output)/'work')
+                result=build(ROOT,args.source,args.output,resolution,args.text_font,current)
         print(json.dumps(result,ensure_ascii=False,indent=2))
     except (ValueError,OSError,RuntimeError,ImportError) as exc:
         print('OpenGlyph: '+str(exc),file=sys.stderr);return 2

@@ -1,3 +1,4 @@
 # Only needed to create new fonts; not needed to compile a paper.
 fonttools>=4.60,<5
 skia-pathops>=0.8,<1
+# OCR --remote additionally needs guwenzi-tools>=0.7; plain build stays offline.

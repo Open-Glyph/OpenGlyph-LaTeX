@@ -16,3 +16,9 @@
 - Provide a complete Chinese paper example, four new-form examples, an offline glyph index, source and Overleaf-ready distributions.
 - Explicit failures for unknown glyphs, font absence and duplicate aliases; no near-character substitution.
 - No production website/PAI changes, no PyPI release, no CTAN submission in this release.
+
+## 0.3.0 — 2026-11-22
+
+- Import OpenGlyph-OCR-IDS TXT/JSON/DSH receipts, retaining Unicode, GlyphWiki markers, nested IDS and second choices separately.
+- Resolve required forms through the authenticated lightweight client; use exact returned combined-font aliases, check cmap coverage and preserve source manifests.
+- Emit relocatable LaTeX projects with real outline fonts, safe TeX escaping and ActualText for searchable/copyable GW/IDS source markup. Missing or incomplete forms fail explicitly.

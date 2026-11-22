@@ -8,7 +8,7 @@ import zipfile
 import argparse
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.2.0'
+VERSION='0.3.0'
 EXCLUDE={'.git','build','dist','__pycache__','.venv'}
 SUFFIXES={'.aux','.log','.out','.toc','.xdv','.pyc','.fls','.fdb_latexmk'}
 

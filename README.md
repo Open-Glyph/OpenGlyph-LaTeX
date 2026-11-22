@@ -2,7 +2,7 @@
 
 已有隶定字用编号输入；字库没有的形，改部件、增饰笔、删笔、调比例，再编成字体。正文不再夹杂一张张缺字图片。
 
-**v0.2.0**：附带从 GlyphWiki `ebag_s` 源码重新编译的 **22,583 个字形**、38,462 份字形及依赖程序，新增JSON模块复用和记录抽取，支持衔接图像检索后的造字项目。普通写作仍只需要 LaTeX；不需要账号、模型、Python、Node 或联网服务。
+**v0.3.0**：新增 OpenGlyph-OCR-IDS 输出导入，可把生僻 Unicode、GlyphWiki 字和嵌套 IDS 一起排成字体正文。附带 **22,583 个字形**、38,462 份字形及依赖程序，保留 JSON 模块复用和记录抽取。普通已有字写作仍只需要 LaTeX；OCR 导入和远端构字的依赖见下方说明。
 
 - [下载发行包](https://github.com/Open-Glyph/OpenGlyph-LaTeX/releases/latest)
 - [中文使用指南](docs/使用指南.md)
@@ -12,7 +12,7 @@
 
 ## 先写起来
 
-下载 `openglyph-overleaf-v0.2.0.zip`，上传到 Overleaf，新建项目，选择 **XeLaTeX**，编译 `main.tex`。也可以解压到本地，用 XeLaTeX 或 Tectonic 编译。
+下载 `openglyph-overleaf-v0.3.0.zip`，上传到 Overleaf，新建项目，选择 **XeLaTeX**，编译 `main.tex`。也可以解压到本地，用 XeLaTeX 或 Tectonic 编译。
 
 最小用法：把 `openglyph.sty` 和 `ebag/` 放在论文项目中。
 
@@ -131,3 +131,33 @@ ASCII 部件编辑 → 本地 KAGE → 新 OTF + 固定版本程序 ────
 ## English summary
 
 OpenGlyph is a LaTeX package for named, font-backed historical Chinese glyphs. It ships a newly compiled OTF containing 22,583 GlyphWiki `ebag_s` forms and an optional offline component-edit compiler. Use `\OpenGlyphLoad{ebag}` and `\ebag{s030-067}`; custom bundles use their own namespaces. No shell escape or network service is involved in ordinary typesetting. Font-local PUA addresses are not character identity, and generated forms require human scholarly review. First-release validation targets XeLaTeX/Tectonic; LuaLaTeX remains experimental. See the separate licenses for OpenGlyph code, GlyphWiki data, and the GPL KAGE engine.
+
+## OpenGlyph-OCR-IDS 输出直接排印（0.3）
+
+图片识别使用已登录的 `guwenzi-tools>=0.7`，模型在服务端运行：
+
+```sh
+python -m pip install 'guwenzi-tools>=0.7' 'fonttools>=4.60,<5'
+guwenzi-tools ocr line.png --second-options --output work/ocr
+python scripts/openglyph.py ocr work/ocr/result.json --remote -o work/paper
+cd work/paper
+tectonic --untrusted main.tex
+```
+
+OCR 导入需要 `fonttools` 和远端调用所用的 `guwenzi-tools`；不需要安装识别模型。默认从 TeX/Tectonic 找 Fandol 宋体，也可用 `--text-font /path/to/font.otf` 指定正文 OTF/TTF。首次编译须能下载 `accsupp` 等 TeX 资源，缓存后可加 `--only-cached`。现有离线字库与 JSON 构字功能照常使用。
+
+导入识别主文里的普通 Unicode、`<gw:精确GlyphWiki名>`、`<ids>嵌套IDS</ids>`，通过现有 PAI 的 `glyph_compose` 取得合并字体及其真实别名。普通正文先检查 cmap，缺字按原 Unicode 码位请求补齐；不会用相似字替换、删掉标签或输出空白。当前不自动处理变体选择符字体序列，遇到会明确报错并保留原文。整面 OCR 目前不带 IDS 拼写器和第二候选，涉及生僻字推荐逐行。
+
+项目包括 `main.tex`、`body.tex`、实际字体、`ocr-original.*`、原始 `text.txt` 和 `ocr-manifest.json`。原始 JSON 保留第二候选、坐标与模型版本，备选不会改写正文。字体局部 PUA 不是 Unicode 身份；PDF 的 ActualText 在复制时保留 GW/IDS 原标记，标准字保持原码位。不同 PDF 阅读器的复制/排序行为可能不同，原始 TXT/JSON 为无损记录。
+
+离线两阶段接口：
+
+```sh
+python scripts/openglyph.py ocr result.json --plan -o plan.json
+# 用 requirements[].arguments 调 glyph_compose，下载 bundle_asset。
+# resolution.json: {"aliases":{"gw:ebag_s093-073":"实际返回的namespace:gN"},
+#  "bundles":[{"path":"font-bundle.zip","aliases":["实际返回的namespace:gN"]}]}
+python scripts/openglyph.py ocr result.json --resolution resolution.json -o paper
+```
+
+只导出正文片段可用 `import-ocr SOURCE --aliases aliases.json -o body.tex`，加载对应字体目录并在主稿中 `\usepackage{accsupp}`。缺少任一标记映射、字体码位或合成项均报错；不会把不完整包当成完整排印。构字是可打印的结构实现，不保证还原扫描里的每条笔画，OCR 读法和字形仍需对照原图校对。
